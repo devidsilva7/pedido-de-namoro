@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uma Pergunta Especial para Você 💕</title>
+
+  <!-- Fontes elegantes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Ligação com o arquivo CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fundo animado -->
+  <div id="falling-container"></div>
+
+  <!-- SEÇÃO 1: HERO -->
+  <section id="hero">
+    <div class="heart-icon fade-in visible">💖</div>
+    <div class="script fade-in visible">Para você</div>
+    <h1 class="fade-in visible">Tenho uma surpresa guardada com carinho...</h1>
+    <p class="fade-in visible">Antes de continuar, respire fundo. Preparei algo especial só para nós dois. Role a tela e descubra.</p>
+    <button class="btn-scroll fade-in visible" onclick="iniciarExperiencia()">Começar</button>
+  </section>
+
+  <!-- SEÇÃO 2: FOTOS DO CASAL -->
+  <section id="fotos">
+    <h2 class="fade-in">Nossos Momentos</h2>
+    <div class="ornamento fade-in"><span>❀</span></div>
+    <div class="galeria">
+      <div class="foto-moldura fade-in">
+        <div class="foto-interna">
+          <img src="foto1.jpg" alt="Foto do casal 1">
+        </div>
+      </div>
+      <div class="foto-moldura fade-in">
+        <div class="foto-interna">
+          <img src="foto2.jpg" alt="Foto do casal 2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3: CARTA DE AMOR -->
+  <section id="carta">
+    <h2 class="fade-in">Uma Carta Para Você</h2>
+    <div class="ornamento fade-in"><span>❦</span></div>
+    <div class="carta-papel fade-in">
+      <span class="carta-selo">❧</span>
+      <div class="carta-texto">
+Eu fiquei pensando em como colocar em palavras tudo aquilo que sinto por você, e percebi que talvez nenhuma palavra seja suficiente para explicar o que sinto por você. Mesmo assim, eu precisava tentar.
+Quando a gente começou a conversar, eu não imaginava que você se tornaria alguém tão importante para mim. O que começou de uma forma simples foi, aos poucos, se transformando em algo que hoje significa muito para mim.
+Já se passaram mais de três meses desde que nossas conversas começaram, e nesse tempo eu tive a oportunidade de conhecer uma pessoa que foi conquistando um espaço enorme no meu coração.
+Hoje, quando penso em você, penso em alguém que consegue deixar meus dias melhores simplesmente por estar neles. Eu amo o seu jeito, amo nossas conversas, nossas brincadeiras, seu sorriso, sua voz, seu cheiro e até aqueles pequenos detalhes que talvez você nem perceba, mas que eu guardo comigo. Amo nossas noites dormidas em ligação, quando a gente fica conversando por horas, às vezes sobre tudo e às vezes sobre absolutamente nada, mas que mesmo assim se tornam momentos que eu não trocaria por nada. E existe uma coisa que eu nunca sei explicar: toda vez que eu vejo você, sinto algo no coração inexplicável, como se naquele instante tudo ficasse um pouco melhor.
+Você se tornou aquela pessoa que eu quero contar as coisas, compartilhar meus momentos e ter por perto. E o mais bonito é que isso aconteceu naturally. Eu não precisei procurar um motivo para amar você. Simplesmente aconteceu.
+Talvez eu nunca consiga explicar exatamente o tamanho do carinho e do amor que sinto por você, mas espero conseguir demonstrar isso através das minhas atitudes. Quero estar ao seu lado nos dias bons, nos dias difíceis, nas conquistas, nas preocupações e em todos aqueles momentos simples que acabam se tornando os mais especiais.
+Eu não posso prometer que tudo será perfeito, porque nenhum relacionamento é. Mas posso prometer que vou fazer o meu melhor para te respeitar, te ouvir, te apoiar e valorizar a pessoa incrível que você é.
+E hoje eu percebi que não quero apenas continuar vivendo momentos bonitos com você. Eu quero construir uma história ao seu lado.
+Quero que tudo isso que sentimos tenha um nome. Quero poder olhar para você e saber que, a partir daquele momento, existe um nós.
+Então, Sofia...
+Eu poderia escrever milhares de palavras, mas no final existe apenas uma pergunta que realmente importa:
+      </div>
+      <div class="assinatura">Com Amor, <br> Márcio</div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4: PEDIDO OFICIAL -->
+  <section id="pedido">
+    <h2 class="fade-in">Você aceita namorar comigo?</h2>
+    <p class="subtitulo fade-in">A resposta está a um clique de distância...</p>
+    <div class="botoes-pedido fade-in">
+      <button id="btn-sim" onclick="celebrar()">Sim, eu aceito 💍</button>
+      <button id="btn-nao">Não</button>
+    </div>
+  </section>
+
+  <footer>
+    feito com 💗 para um momento inesquecível
+  </footer>
+
+  <!-- TELA DE CELEBRAÇÃO -->
+  <div id="celebracao">
+    <div class="ornamento"><span>❀</span></div>
+    <h1>Ela disse SIM! 🎉💖</h1>
+    <p>A partir de hoje, nossa história ganha um novo e lindo capítulo. Obrigado por fazer parte da minha vida.</p>
+  </div>
+
+  <!-- TOCADOR DE MÚSICA FLUTUANTE (COM LOOP E CONTROLE AUTOMÁTICO) -->
+  <audio id="audio-fundo" loop src="musicajm.mp3"></audio>
+  <div id="music-player" class="music-player-btn" onclick="toggleMusica()">
+    <span id="music-icon">🎵</span>
+    <span id="music-text">Música de Fundo</span>
+  </div>
+
+  <!-- Ligação com o arquivo JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
