@@ -36,6 +36,12 @@ body {
   position: relative;
 }
 
+/* Trava a rolagem na primeira tela antes do clique */
+body.bloqueado {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
 ::selection {
   background: var(--dourado-champanhe);
   color: var(--rubi-profundo);
@@ -365,7 +371,7 @@ h1, h2 {
 }
 
 /* ============================================================
-   PEDIDO OFICIAL
+   PEDIDO OFICIAL & BOTÃO FUGITIVO
 ============================================================ */
 #pedido {
   background:
@@ -403,8 +409,9 @@ h1, h2 {
   align-items: center;
   flex-wrap: wrap;
   position: relative;
-  min-height: 130px;
+  min-height: 180px;
   width: 100%;
+  max-width: 500px;
 }
 
 #btn-sim {
@@ -445,11 +452,45 @@ h1, h2 {
   backdrop-filter: blur(4px);
 }
 
-/* Movimento do botão fugitivo */
+/* Garante movimento restrito apenas ao container sem sair da tela */
 #btn-nao.fugindo {
-  position: fixed !important;
-  z-index: 9999;
+  position: absolute !important;
+  z-index: 10;
   margin: 0 !important;
+}
+
+/* ============================================================
+   TOCADOR DE MÚSICA FLUTUANTE
+============================================================ */
+.music-player-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background: rgba(43, 10, 23, 0.85);
+  border: 1px solid var(--dourado-champanhe);
+  color: var(--dourado-brilho);
+  padding: 10px 18px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 15px var(--sombra-dramatica);
+  transition: all 0.3s ease;
+}
+
+.music-player-btn:hover {
+  background: var(--rubi-vibrante);
+  color: var(--branco-perola);
+  transform: scale(1.05);
+}
+
+.music-player-btn.tocando {
+  border-color: var(--dourado-brilho);
+  box-shadow: 0 0 12px var(--sombra-dourada);
 }
 
 /* ============================================================
@@ -557,6 +598,13 @@ footer {
   .botoes-pedido {
     flex-direction: column;
     gap: 26px;
-    min-height: 160px;
+    min-height: 200px;
+  }
+
+  .music-player-btn {
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.85rem;
+    padding: 8px 14px;
   }
 }

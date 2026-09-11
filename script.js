@@ -1,10 +1,10 @@
 /* ============================================================
-   PRÉ-CARREGAMENTO RÁPIDO DO ÁUDIO
+   BLOQUEIO INICIAL & PRÉ-CARREGAMENTO DO ÁUDIO
 ============================================================ */
 const audioElem = document.getElementById('audio-fundo');
 
 if (audioElem) {
-  audioElem.preload = "auto"; // Força o navegador a baixar o áudio imediatamente
+  audioElem.preload = "auto";
   audioElem.loop = true;
 
   audioElem.addEventListener('ended', function() {
@@ -68,43 +68,48 @@ const observador = new IntersectionObserver((entradas) => {
 elementosFade.forEach(el => observador.observe(el));
 
 /* ============================================================
-   INICIAR EXPERIÊNCIA (MÚSICA INSTANTÂNEA + ROLAGEM SUAVE)
+   INICIAR EXPERIÊNCIA (DESBLOQUEIO + MÚSICA + ROLAGEM)
 ============================================================ */
 function iniciarExperiencia() {
-  // Rola suavemente até a seção de fotos
+  // Libera a rolagem da página
+  document.body.classList.remove('bloqueado');
+
+  // Toca a música de fundo
+  const audio = document.getElementById('audio-fundo');
+  if (audio && audio.paused) {
+    audio.currentTime = 0;
+    toggleMusica();
+  }
+
+  // Desliza suavemente até a seção de fotos
   const secaoFotos = document.getElementById('fotos');
   if (secaoFotos) {
     secaoFotos.scrollIntoView({ behavior: 'smooth' });
   }
-
-  // Toca o áudio imediatamente ao clicar
-  const audio = document.getElementById('audio-fundo');
-  if (audio && audio.paused) {
-    audio.currentTime = 0; // Garante o início do arquivo
-    toggleMusica();
-  }
 }
 
 /* ============================================================
-   BOTÃO "NÃO" QUE FOGE
+   BOTÃO "NÃO" FLUTUANTE (DENTRO DA ÁREA DO PEDIDO)
 ============================================================ */
 const btnNao = document.getElementById('btn-nao');
+const containerPedido = document.querySelector('.botoes-pedido');
 
-if (btnNao) {
+if (btnNao && containerPedido) {
   function moverBotaoNao() {
+    const rectContainer = containerPedido.getBoundingClientRect();
     const larguraBtn = btnNao.offsetWidth;
     const alturaBtn = btnNao.offsetHeight;
-    const margem = 20;
 
-    const maxX = window.innerWidth - larguraBtn - margem;
-    const maxY = window.innerHeight - alturaBtn - margem;
+    // Calcula os limites dentro da área de botões da pergunta
+    const maxLeft = rectContainer.width - larguraBtn;
+    const maxTop = rectContainer.height - alturaBtn;
 
-    const novoX = Math.random() * (maxX - margem) + margem;
-    const novoY = Math.random() * (maxY - margem) + margem;
+    const novoX = Math.max(0, Math.floor(Math.random() * maxLeft));
+    const novoY = Math.max(0, Math.floor(Math.random() * maxTop));
 
-    btnNao.classList.add('fugindo');
-    btnNao.style.left = novoX + 'px';
-    btnNao.style.top = novoY + 'px';
+    btnNao.style.position = 'absolute';
+    btnNao.style.left = `${novoX}px`;
+    btnNao.style.top = `${novoY}px`;
   }
 
   btnNao.addEventListener('mouseenter', moverBotaoNao);
